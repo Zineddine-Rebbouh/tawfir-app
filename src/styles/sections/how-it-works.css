@@ -1,0 +1,106 @@
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.actor-column {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  min-height: 520px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-light);
+}
+
+html.dark-mode .actor-column {
+  background: rgba(17, 41, 30, 0.82);
+}
+
+.actor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.actor-head h3 {
+  margin: 0;
+  font-size: 1.55rem;
+  font-weight: 800;
+}
+
+.actor-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  color: var(--color-primary);
+  background: var(--color-mint);
+}
+
+.step-list {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  padding-block-start: 8px;
+}
+
+.connector-svg {
+  position: absolute;
+  inset-block: 20px;
+  inset-inline-start: 27px;
+  width: 30px;
+  height: calc(100% - 40px);
+  pointer-events: none;
+}
+
+.connector-path {
+  fill: none;
+  stroke: rgba(26, 127, 75, 0.3);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+}
+
+.actor-column.is-visible .connector-path {
+  animation: drawPath 1.5s ease forwards;
+}
+
+.step-card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 14px;
+  align-items: center;
+  min-height: 92px;
+  border: 1px solid rgba(26, 127, 75, 0.1);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  background: var(--color-surface);
+}
+
+.step-number {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: #231808;
+  background: var(--color-accent);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.step-card p {
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.55;
+}

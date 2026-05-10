@@ -1,0 +1,77 @@
+.container {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(72px, 8vw, 128px);
+}
+
+.grid-bg {
+  background-color: var(--color-surface-alt);
+  background-image: radial-gradient(circle, rgba(26, 127, 75, 0.13) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.section-header {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  margin-block-end: clamp(36px, 5vw, 64px);
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  border: 1px solid rgba(26, 127, 75, 0.16);
+  border-radius: 999px;
+  padding: 6px 14px;
+  color: var(--color-primary);
+  background: rgba(232, 245, 233, 0.82);
+  font-weight: 800;
+  box-shadow: var(--shadow-light);
+}
+
+html.dark-mode .eyebrow {
+  background: rgba(26, 46, 34, 0.9);
+}
+
+.section-title {
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.18;
+}
+
+.section-subtitle {
+  max-width: 780px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+}
+
+.dark-section {
+  color: var(--color-text-inverse);
+  background:
+    radial-gradient(circle at 20% 18%, rgba(245, 166, 35, 0.14), transparent 34%),
+    radial-gradient(circle at 78% 68%, rgba(26, 127, 75, 0.32), transparent 34%),
+    var(--color-dark);
+}
+
+.dark-section .section-title,
+.dark-section h2,
+.dark-section h3 {
+  color: var(--color-text-inverse);
+}
+
+.dark-section .section-subtitle,
+.dark-section .fr,
+.dark-section p {
+  color: rgba(255, 255, 255, 0.72);
+}

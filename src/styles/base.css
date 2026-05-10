@@ -1,0 +1,83 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background: var(--color-surface);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--color-text);
+  background: var(--color-surface);
+  font-family: "Cairo", system-ui, sans-serif;
+  text-align: start;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  color: var(--color-text-inverse);
+  background: var(--color-primary);
+}
+
+.fr {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: "Plus Jakarta Sans", "DM Sans", sans-serif;
+  line-height: 1.7;
+}
+
+.skip-link {
+  position: fixed;
+  inset-block-start: 12px;
+  inset-inline-start: 12px;
+  z-index: 10000;
+  transform: translateY(-160%);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  color: var(--color-text-inverse);
+  background: var(--color-primary);
+  transition: transform var(--transition);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}

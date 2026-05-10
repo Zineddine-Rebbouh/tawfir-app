@@ -1,0 +1,229 @@
+@media (max-width: 1080px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .hero-grid,
+  .eco-grid,
+  .map-grid,
+  .charity-grid,
+  .download-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content,
+  .hero-visual {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .hero-visual {
+    min-height: 560px;
+  }
+
+  .how-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .feature-card.large,
+  .feature-card.medium,
+  .feature-card.wide {
+    grid-column: span 6;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .trust-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --nav-height: 74px;
+  }
+
+  .site-header.scrolled {
+    --nav-height: 64px;
+  }
+
+  .nav-actions .btn-amber,
+  .lang-toggle,
+  .logo-text {
+    display: none;
+  }
+
+  .hero {
+    padding-block-start: calc(var(--nav-height) + 28px);
+  }
+
+  .hero-content {
+    width: 100%;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero-title {
+    width: 100%;
+    font-size: clamp(1.9rem, 9.5vw, 2.35rem);
+    gap: 0.16em;
+    line-height: 1.2;
+  }
+
+  .hero-badge,
+  .hero-subtitle,
+  .category-pills,
+  .stats-bar {
+    max-width: 100%;
+  }
+
+  .hero-badge {
+    width: auto;
+    justify-self: center;
+  }
+
+  .hero-subtitle {
+    width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  .hero-subtitle .fr {
+    overflow-wrap: anywhere;
+  }
+
+  .hero-actions,
+  .store-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-actions .btn,
+  .store-btn {
+    flex: 1 1 100%;
+  }
+
+  .wilaya-widget {
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    border-radius: var(--radius-md);
+  }
+
+  .wilaya-widget label {
+    display: none;
+  }
+
+  .title-line {
+    justify-content: center;
+  }
+
+  .wilaya-widget select {
+    max-width: 100%;
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .stats-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: 460px;
+  }
+
+  .hero-phone-wrap {
+    width: min(268px, 78vw);
+  }
+
+  .floating-card {
+    display: none;
+  }
+
+  .section {
+    padding-block: 64px;
+  }
+
+  .actor-column {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .screenshot-stage {
+    min-height: auto;
+  }
+
+  .phone-carousel {
+    display: grid;
+    gap: 22px;
+    width: 100%;
+    height: auto;
+    justify-items: center;
+  }
+
+  .carousel-phone,
+  .carousel-phone.center,
+  .carousel-phone.left,
+  .carousel-phone.right,
+  .phone-carousel:hover .carousel-phone.center,
+  .phone-carousel:hover .carousel-phone.left,
+  .phone-carousel:hover .carousel-phone.right {
+    position: relative;
+    inset: auto;
+    width: min(270px, 82vw);
+    transform: none;
+    filter: none;
+  }
+
+  .map-visual {
+    min-height: 420px;
+  }
+
+  .input-row {
+    flex-direction: column;
+    border-radius: var(--radius-md);
+  }
+
+  .input-row button {
+    width: 100%;
+  }
+
+  .trust-row,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .floating-whatsapp {
+    left: 14px;
+    right: auto;
+    bottom: 14px;
+  }
+
+  .whatsapp-bubble {
+    display: none;
+  }
+
+  .scroll-top {
+    right: 14px;
+    left: auto;
+    bottom: 14px;
+  }
+}

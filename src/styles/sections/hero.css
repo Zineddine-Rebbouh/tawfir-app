@@ -1,0 +1,438 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-block: calc(var(--nav-height) + 44px) 72px;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(245, 166, 35, 0.2), transparent 30%),
+    radial-gradient(circle at 80% 18%, rgba(26, 127, 75, 0.16), transparent 32%),
+    linear-gradient(180deg, var(--color-surface), var(--color-surface-alt));
+}
+
+.particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.68;
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 80px);
+}
+
+.hero-grid > * {
+  min-width: 0;
+}
+
+.hero-content {
+  display: grid;
+  grid-column: 1;
+  gap: 24px;
+  max-width: 100%;
+  justify-items: start;
+}
+
+.hero-visual {
+  position: relative;
+  display: grid;
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 620px;
+  place-items: center;
+  perspective: 1200px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  border: 1px solid rgba(26, 127, 75, 0.16);
+  border-radius: 999px;
+  padding: 8px 16px;
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow-light);
+  /* backdrop-filter: blur(14px); Removed for performance with particles */
+  font-weight: 800;
+}
+
+html.dark-mode .hero-badge {
+  background: rgba(13, 31, 23, 0.72);
+}
+
+.hero-title {
+  display: grid;
+  gap: 0.02em;
+  max-width: 760px;
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+.title-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.12em 0.3em;
+  min-width: 0;
+}
+
+.hero-title .word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.hero-title .accent-word {
+  color: var(--color-primary);
+}
+
+.hero-subtitle {
+  max-width: 700px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+  line-height: 1.9;
+}
+
+.hero-actions,
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.category-pills {
+  gap: 10px;
+  max-width: 700px;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 118px;
+  min-height: 40px;
+  overflow: hidden;
+  border: 1px solid rgba(26, 127, 75, 0.14);
+  border-radius: 999px;
+  padding: 8px 14px;
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow-light);
+  transition: min-width var(--transition), transform var(--transition), border-color var(--transition);
+  /* backdrop-filter: blur(12px); Removed for performance */
+}
+
+.category-pill .count {
+  max-width: 0;
+  overflow: hidden;
+  color: var(--color-primary);
+  opacity: 0;
+  white-space: nowrap;
+  font-size: 0.82rem;
+  font-weight: 800;
+  transition: max-width var(--transition), opacity var(--transition);
+}
+
+.category-pill:hover {
+  min-width: 210px;
+  transform: translateY(-2px) scale(1.02);
+  border-color: rgba(26, 127, 75, 0.34);
+}
+
+.category-pill:hover .count {
+  max-width: 110px;
+  opacity: 1;
+}
+
+.wilaya-widget {
+  position: relative;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  border: 1px solid rgba(26, 127, 75, 0.18);
+  border-radius: 999px;
+  padding: 6px 8px 6px 14px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow-light);
+  /* backdrop-filter: blur(16px); Removed for performance */
+}
+
+.wilaya-widget label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.wilaya-label-short {
+  display: none;
+}
+
+.wilaya-widget select {
+  min-height: 36px;
+  border: 0;
+  border-radius: 999px;
+  padding: 4px 12px;
+  color: var(--color-text);
+  background: var(--color-mint);
+  font-weight: 800;
+  text-align: center;
+  text-align-last: center;
+}
+
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  max-width: 740px;
+  gap: 12px;
+  margin-block-start: 8px;
+}
+
+.stat-card {
+  position: relative;
+  min-height: 116px;
+  overflow: hidden;
+  border: 1px solid rgba(26, 127, 75, 0.12);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow-light);
+  /* backdrop-filter: blur(16px); Removed for performance */
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 14px;
+  inset-block-start: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(245, 166, 35, 0.2);
+}
+
+.stat-value {
+  position: relative;
+  color: var(--color-primary);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+}
+
+.stat-label {
+  position: relative;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.hero-phone-wrap {
+  position: relative;
+  width: min(330px, 76vw);
+  will-change: transform, opacity;
+}
+
+.hero-phone-wrap .phone {
+  animation: float 4s ease-in-out infinite;
+}
+
+.halo {
+  position: absolute;
+  inset: 10% -28%;
+  z-index: -1;
+  border-radius: 999px;
+  opacity: 0.84;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 42% 38%, rgba(245, 166, 35, 0.3), transparent 34%),
+    radial-gradient(circle at 64% 62%, rgba(26, 127, 75, 0.34), transparent 38%);
+}
+
+.floating-card {
+  position: absolute;
+  z-index: 5;
+  display: grid;
+  gap: 4px;
+  min-width: 160px;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow-heavy);
+  /* backdrop-filter: blur(18px); Removed for performance */
+  animation: floatSmall 4.8s ease-in-out infinite;
+}
+
+.floating-card strong {
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+
+.floating-card span {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.float-impact {
+  inset-inline-start: 2%;
+  inset-block-start: 18%;
+}
+
+.float-qr {
+  inset-inline-end: -2%;
+  inset-block-end: 20%;
+  animation-delay: 0.8s;
+}
+
+.qr-mini {
+  display: grid;
+  grid-template-columns: repeat(3, 8px);
+  gap: 3px;
+  width: max-content;
+  margin-block-start: 4px;
+}
+
+.qr-mini i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
+.phone-status,
+.screen-header,
+.screen-search,
+.food-list {
+  padding-inline: 18px;
+}
+
+.phone-status {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 20px 8px;
+  color: #123325;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.screen-header {
+  padding-block: 8px 14px;
+}
+
+.screen-header strong {
+  display: block;
+  color: #123325;
+  font-size: 1.18rem;
+}
+
+.screen-header span {
+  color: #5D6D64;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.screen-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  margin: 0 18px 16px;
+  border-radius: 14px;
+  color: #577063;
+  background: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(13, 31, 23, 0.08);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.food-list {
+  display: grid;
+  gap: 12px;
+}
+
+.food-item {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 12px;
+  align-items: center;
+  border-radius: 18px;
+  padding: 12px;
+  background: #FFFFFF;
+  box-shadow: 0 12px 26px rgba(13, 31, 23, 0.08);
+}
+
+.food-img {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: #FFF3D8;
+  font-size: 1.6rem;
+}
+
+.food-info strong {
+  color: #123325;
+  font-size: 0.92rem;
+}
+
+.food-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-block-start: 7px;
+}
+
+.meta-pill {
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: #0D5C35;
+  background: #E8F5E9;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.meta-pill.price {
+  color: #231808;
+  background: #F8C35A;
+}
+
+.screen-nav {
+  position: absolute;
+  inset-inline: 18px;
+  inset-block-end: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  min-height: 54px;
+  border-radius: 18px;
+  background: #FFFFFF;
+  box-shadow: 0 12px 28px rgba(13, 31, 23, 0.12);
+}
+
+.screen-nav span {
+  display: grid;
+  place-items: center;
+  color: #769083;
+}
+
+.screen-nav .active {
+  color: var(--color-primary);
+}
