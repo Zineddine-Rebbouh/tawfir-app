@@ -13,6 +13,10 @@
   --color-text-muted: #6B7280;
   --color-text-inverse: #FFFFFF;
   --color-border: #E2E8E4;
+  --color-success: #1A7F4B;
+  --color-error: #D94F3D;
+  --color-success-light: #E8F5EE;
+  --color-error-light: #FDECEA;
   --eco-exemplary: #4CAF50;
   --eco-reliable: #8BC34A;
   --eco-developing: #FFC107;

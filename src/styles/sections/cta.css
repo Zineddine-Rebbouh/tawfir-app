@@ -207,3 +207,38 @@
   box-shadow: var(--shadow-light);
   font-weight: 800;
 }
+
+/* Form state classes */
+.form--loading button[type="submit"],
+.form--loading .form__submit {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form--success .form__message--success {
+  display: block;
+  color: var(--color-success);
+  background: var(--color-success-light);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+  font-family: 'Cairo', sans-serif;
+  text-align: center;
+}
+
+.form--error .form__message--error {
+  display: block;
+  color: var(--color-error);
+  background: var(--color-error-light);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+  font-family: 'Cairo', sans-serif;
+  text-align: center;
+}
+
+.form__message--success,
+.form__message--error {
+  display: none;
+}

@@ -120,8 +120,10 @@ Logo placeholder markup is centralized in `src/components/Logo.js`.
 
 ## Future Improvements
 
-- Add real screenshot assets and replace placeholder screens with `<img loading="lazy">`.
-- Add analytics events for CTA clicks and waitlist submissions.
+- Replace placeholder screenshots with real app assets and use `<img loading="lazy">`.
+- Replace `public/og-image.svg` with a professionally designed 1200×630 PNG.
+- Add analytics events (Plausible or a lightweight custom solution) for CTA clicks and waitlist conversions.
 - Move social URLs, support phone, and legal links into environment/config data.
-- Add a visual regression workflow with Playwright.
-- Add linting and formatting with ESLint and Prettier if the project grows.
+- Add visual regression tests with Playwright.
+- Add ESLint + Prettier config if the project grows beyond one contributor.
+- Connect waitlist form to a real backend (Supabase, Airtable, or a Django endpoint).

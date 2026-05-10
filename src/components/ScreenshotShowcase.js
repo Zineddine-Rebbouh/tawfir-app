@@ -9,9 +9,9 @@ export function ScreenshotShowcase() {
     <section class="section dark-section" id="screenshots" aria-labelledby="screensTitle">
       <div class="container">
         ${SectionHeader({
-          eyebrow: "لقطات التطبيق",
-          title: "تجربة هاتفية واضحة لكل دور",
-          subtitle: "Remplacez les zones ci-dessous par les captures réelles de votre application Flutter.",
+          eyebrow: "واجهة التطبيق",
+          title: "تجربة استخدام سلسة ومبتكرة",
+          subtitle: "تصميم عصري يضع سهولة الاستخدام في المقام الأول، ليضمن لك تنقلاً سريعاً وتجربة ممتعة في كل خطوة.",
           id: "screensTitle"
         })}
         <div class="screenshot-stage fade-in">
@@ -20,10 +20,6 @@ export function ScreenshotShowcase() {
             <div class="carousel-phone center">${PhoneFrame(ScreenshotPlaceholder(center))}</div>
             <div class="carousel-phone right">${PhoneFrame(ScreenshotPlaceholder(right))}</div>
           </div>
-        </div>
-        <div class="screenshot-note fade-in">
-          <p>لقطات إضافية جاهزة للاستبدال داخل نفس النمط: <span class="fr" dir="ltr" lang="fr">eco_score_profile.png, charity_request.png, support_chat.png</span></p>
-          <p class="fr" dir="ltr" lang="fr">Recherchez chaque libellé de capture et remplacez le bloc d'écran par une image avec object-fit: cover.</p>
         </div>
       </div>
     </section>
