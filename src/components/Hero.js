@@ -1,6 +1,6 @@
 import { categories, hero, stats, wilayas } from "../data/content.js";
 import { icon } from "./Icon.js";
-import { PhoneFrame } from "./PhoneFrame.js";
+import { PhoneFrame, ScreenshotImage } from "./PhoneFrame.js";
 
 function titleLine(words, lineIndex) {
   return `
@@ -27,33 +27,6 @@ function statCards() {
       <p class="stat-label">${stat.labelAr}<br><span class="fr" dir="ltr" lang="fr">${stat.labelFr}</span></p>
     </article>
   `).join("");
-}
-
-function heroPhoneScreen() {
-  return `
-    <div class="phone-status"><span>٩:٤١</span><span>●●●</span></div>
-    <div class="screen-header">
-      <strong>قريب منك الآن</strong>
-      <span>وجبات محفوظة في الجزائر العاصمة</span>
-    </div>
-    <div class="screen-search">${icon("pin")} ابحث عن خبز، وجبات، حلويات</div>
-    <div class="food-list">
-      ${[
-        ["🥖", "سلة خبز طازج", "٠٫٨ كم", "-٧٠٪"],
-        ["🥗", "وجبة غداء متوازنة", "١٫٤ كم", "-٥٥٪"],
-        ["🍊", "صندوق فواكه", "٢٫١ كم", "تبرع"]
-      ].map(([emoji, title, distance, tag]) => `
-        <div class="food-item">
-          <div class="food-img">${emoji}</div>
-          <div class="food-info">
-            <strong>${title}</strong>
-            <div class="food-meta"><span class="meta-pill">${distance}</span><span class="meta-pill price">${tag}</span></div>
-          </div>
-        </div>
-      `).join("")}
-    </div>
-    <div class="screen-nav"><span class="active">⌂</span><span>⌕</span><span>♡</span><span>☻</span></div>
-  `;
 }
 
 export function Hero() {
@@ -93,7 +66,7 @@ export function Hero() {
             <strong>QR</strong><span>تحقق فوري</span>
             <span class="qr-mini"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
           </div>
-          <div class="hero-phone-wrap" id="heroPhone">${PhoneFrame(heroPhoneScreen())}</div>
+          <div class="hero-phone-wrap" id="heroPhone">${PhoneFrame(ScreenshotImage({ label: "تطبيق المستهلك", file: "hero-screen.png" }))}</div>
         </div>
       </div>
     </section>

@@ -26,10 +26,12 @@ function initGsapAnimations() {
     ease: "power3.out"
   });
 
-  gsap.fromTo("#heroPhone", { x: 120, opacity: 0, rotateY: -9 }, {
+  gsap.fromTo("#heroPhone", { x: 120, opacity: 0, rotateX: 20, rotateY: -24, rotateZ: 6 }, {
     x: 0,
     opacity: 1,
-    rotateY: 0,
+    rotateX: 20,
+    rotateY: -24,
+    rotateZ: 6,
     duration: 1.2,
     ease: "elastic.out(1, 0.5)",
     delay: 0.28
@@ -44,7 +46,6 @@ function initGsapAnimations() {
     const heroPhone = qs("#heroPhone");
     if (heroPhone) {
       heroPhone.style.opacity = "1";
-      heroPhone.style.transform = "none";
     }
   }, 2600);
 

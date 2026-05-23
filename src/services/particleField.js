@@ -1,5 +1,30 @@
 const EMOJIS = ["🥖", "🍊", "🥗", "🫙", "🍞", "🥕"];
 
+// Cache for emoji canvases
+const emojiCache = {};
+
+function getEmojiCanvas(emoji, size, ratio) {
+  const key = `${emoji}-${size}-${ratio}`;
+  if (!emojiCache[key]) {
+    const canvas = document.createElement("canvas");
+    const physicalSize = Math.round(size * ratio);
+    const padding = Math.ceil(physicalSize * 0.25);
+    const canvasSize = physicalSize + padding * 2;
+    
+    canvas.width = canvasSize;
+    canvas.height = canvasSize;
+    
+    const ctx = canvas.getContext("2d");
+    ctx.font = `${physicalSize}px serif`;
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    ctx.fillText(emoji, canvasSize / 2, canvasSize / 2);
+    
+    emojiCache[key] = canvas;
+  }
+  return emojiCache[key];
+}
+
 function createParticle(logicalWidth, logicalHeight) {
   return {
     x: Math.random() * logicalWidth,
@@ -24,9 +49,10 @@ export function initParticleField(prefersReducedMotion) {
   let lastFrame = 0;
   let logicalWidth = 0;
   let logicalHeight = 0;
+  let ratio = 1;
 
   const resize = () => {
-    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    ratio = Math.min(window.devicePixelRatio || 1, 2);
     logicalWidth = canvas.offsetWidth;
     logicalHeight = canvas.offsetHeight;
     canvas.width = Math.floor(logicalWidth * ratio);
@@ -36,21 +62,33 @@ export function initParticleField(prefersReducedMotion) {
   };
 
   const draw = (time) => {
-    if (isActive && time - lastFrame >= 33) {
-      lastFrame = time;
+    if (!lastFrame) lastFrame = time;
+    const delta = Math.min((time - lastFrame) / 16.666, 4); // Cap to prevent large jumps on tab activation
+    lastFrame = time;
+
+    if (isActive) {
       ctx.clearRect(0, 0, logicalWidth, logicalHeight);
       particles.forEach((particle) => {
-        particle.y -= particle.speed * 1.6;
-        particle.x += Math.sin(time * 0.001 + particle.phase) * particle.sway * 0.22;
+        particle.y -= particle.speed * 1.6 * delta;
+        particle.x += Math.sin(time * 0.001 + particle.phase) * particle.sway * 0.22 * delta;
 
         if (particle.y < -40) {
           particle.y = logicalHeight + 40;
           particle.x = Math.random() * logicalWidth;
         }
 
+        const sizeKey = Math.round(particle.size);
+        const emojiCanvas = getEmojiCanvas(particle.emoji, sizeKey, ratio);
+        
         ctx.globalAlpha = particle.opacity * (0.7 + Math.sin(time * 0.001 + particle.phase) * 0.3);
-        ctx.font = `${particle.size}px serif`;
-        ctx.fillText(particle.emoji, particle.x, particle.y);
+        const logicalCanvasSize = emojiCanvas.width / ratio;
+        ctx.drawImage(
+          emojiCanvas, 
+          particle.x - logicalCanvasSize / 2, 
+          particle.y - logicalCanvasSize / 2,
+          logicalCanvasSize,
+          logicalCanvasSize
+        );
       });
       ctx.globalAlpha = 1;
     }

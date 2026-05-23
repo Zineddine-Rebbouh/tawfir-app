@@ -6,9 +6,13 @@ export function initScrollUi(prefersReducedMotion) {
   const scrollTop = qs("#scrollTop");
   
   let isTicking = false;
+  let maxScroll = 0;
+
+  const cacheDimensions = () => {
+    maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  };
 
   const update = () => {
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     const amount = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
     if (progress) progress.style.transform = `scaleX(${Math.min(amount, 1)})`;
@@ -25,6 +29,8 @@ export function initScrollUi(prefersReducedMotion) {
     }
   };
 
+  cacheDimensions();
+  on(window, "resize", cacheDimensions, { passive: true });
   on(window, "scroll", onScroll, { passive: true });
   on(scrollTop, "click", () => window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" }));
   update();

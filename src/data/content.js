@@ -107,9 +107,9 @@ export const features = [
 ];
 
 export const screenshots = [
-  { label: "[Screenshot: Merchant Dashboard]", file: "merchant_dashboard.png" },
-  { label: "[Screenshot: Consumer Feed]", file: "consumer_feed.png" },
-  { label: "[Screenshot: QR Verification]", file: "qr_verification.png" }
+  { label: "إدارة التجار", file: "merchant-ecosystem.png" },
+  { label: "تطبيق المستهلك", file: "screen-1.png" },
+  { label: "منصة الجمعيات", file: "charity-ecosystem.png" }
 ];
 
 export const ecoTiers = [

@@ -1,5 +1,5 @@
 import { screenshots } from "../data/content.js";
-import { PhoneFrame, ScreenshotPlaceholder } from "./PhoneFrame.js";
+import { PhoneFrame, ScreenshotImage } from "./PhoneFrame.js";
 import { SectionHeader } from "./SectionHeader.js";
 
 export function ScreenshotShowcase() {
@@ -16,12 +16,13 @@ export function ScreenshotShowcase() {
         })}
         <div class="screenshot-stage fade-in">
           <div class="phone-carousel" aria-label="معرض لقطات التطبيق">
-            <div class="carousel-phone left">${PhoneFrame(ScreenshotPlaceholder(left))}</div>
-            <div class="carousel-phone center">${PhoneFrame(ScreenshotPlaceholder(center))}</div>
-            <div class="carousel-phone right">${PhoneFrame(ScreenshotPlaceholder(right))}</div>
+            <div class="carousel-phone left">${PhoneFrame(ScreenshotImage(left))}</div>
+            <div class="carousel-phone center">${PhoneFrame(ScreenshotImage(center))}</div>
+            <div class="carousel-phone right">${PhoneFrame(ScreenshotImage(right))}</div>
           </div>
         </div>
       </div>
     </section>
   `;
 }
+

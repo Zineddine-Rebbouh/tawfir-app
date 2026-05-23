@@ -8,10 +8,8 @@ export function PhoneFrame(content, className = "") {
   `;
 }
 
-export function ScreenshotPlaceholder({ label, file }) {
+export function ScreenshotImage({ label, file }) {
   return `
-    <div class="placeholder-screen" data-label="${label}">
-      <span>${label}<br>${file}</span>
-    </div>
+    <img src="/public/screenshots/${file}" alt="${label}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
   `;
 }
