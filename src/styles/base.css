@@ -90,3 +90,8 @@ button {
 .skip-link:focus {
   transform: translateY(0);
 }
+
+[hidden] {
+  display: none !important;
+}
+
