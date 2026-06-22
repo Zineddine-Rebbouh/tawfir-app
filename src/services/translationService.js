@@ -2,7 +2,7 @@ import { translations } from "../data/translations.js";
 import { qs } from "../utils/dom.js";
 
 const STORAGE_KEY = "tawfir-language";
-let currentLang = localStorage.getItem(STORAGE_KEY) || "ar";
+let currentLang = localStorage.getItem(STORAGE_KEY) || "en";
 let onLanguageChangeCallback = null;
 
 export function getLanguage() {
@@ -10,7 +10,7 @@ export function getLanguage() {
 }
 
 export function getTranslations() {
-  return translations[currentLang] || translations.ar;
+  return translations[currentLang] || translations.en;
 }
 
 /**

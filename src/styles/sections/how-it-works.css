@@ -87,6 +87,11 @@ html.dark-mode .actor-column {
   background: var(--color-surface);
 }
 
+html.dark-mode .step-card {
+  background: rgba(17, 41, 30, 0.82);
+  border-color: rgba(26, 127, 75, 0.18);
+}
+
 .step-number {
   display: grid;
   place-items: center;

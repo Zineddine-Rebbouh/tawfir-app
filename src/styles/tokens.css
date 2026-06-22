@@ -42,6 +42,8 @@ html.dark-mode {
   --color-text-muted: #A8B8AE;
   --color-border: #254735;
   --color-accent-soft: #392B12;
+  --color-dark: #060F0A;
   --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.26), 0 4px 18px rgba(0, 0, 0, 0.24);
   --shadow-heavy: 0 12px 38px rgba(0, 0, 0, 0.38);
+  --shadow-green: 0 20px 60px rgba(26, 127, 75, 0.38);
 }

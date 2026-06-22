@@ -65,7 +65,8 @@
 }
 
 html.dark-mode .hero-badge {
-  background: rgba(13, 31, 23, 0.72);
+  background: rgba(13, 31, 23, 0.84);
+  border-color: rgba(26, 127, 75, 0.3);
 }
 
 .hero-title {
@@ -134,6 +135,11 @@ html.dark-mode .hero-badge {
   /* backdrop-filter: blur(12px); Removed for performance */
 }
 
+html.dark-mode .category-pill {
+  background: rgba(17, 41, 30, 0.88);
+  border-color: rgba(26, 127, 75, 0.22);
+}
+
 .category-pill .count {
   max-width: 0;
   overflow: hidden;
@@ -169,6 +175,16 @@ html.dark-mode .hero-badge {
   background: rgba(255, 255, 255, 0.96);
   box-shadow: var(--shadow-light);
   /* backdrop-filter: blur(16px); Removed for performance */
+}
+
+html.dark-mode .wilaya-widget {
+  background: rgba(13, 31, 23, 0.92);
+  border-color: rgba(26, 127, 75, 0.28);
+}
+
+html.dark-mode .wilaya-widget select {
+  color: var(--color-text);
+  background: rgba(26, 127, 75, 0.22);
 }
 
 .wilaya-widget label {
@@ -214,6 +230,11 @@ html.dark-mode .hero-badge {
   background: rgba(255, 255, 255, 0.94);
   box-shadow: var(--shadow-light);
   /* backdrop-filter: blur(16px); Removed for performance */
+}
+
+html.dark-mode .stat-card {
+  background: rgba(17, 41, 30, 0.9);
+  border-color: rgba(26, 127, 75, 0.2);
 }
 
 .stat-card::before {
@@ -277,6 +298,15 @@ html.dark-mode .hero-badge {
   box-shadow: var(--shadow-heavy);
   /* backdrop-filter: blur(18px); Removed for performance */
   animation: floatSmall 4.8s ease-in-out infinite;
+}
+
+html.dark-mode .floating-card {
+  background: rgba(13, 31, 23, 0.95);
+  border-color: rgba(26, 127, 75, 0.3);
+}
+
+html.dark-mode .floating-card span {
+  color: var(--color-text-muted);
 }
 
 .floating-card strong {

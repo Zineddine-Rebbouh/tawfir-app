@@ -10,6 +10,6 @@ export function PhoneFrame(content, className = "") {
 
 export function ScreenshotImage({ label, file }) {
   return `
-    <img src="/public/screenshots/${file}" alt="${label}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+    <img src="/screenshots/${file}" alt="${label}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
   `;
 }

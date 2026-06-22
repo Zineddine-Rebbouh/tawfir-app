@@ -85,8 +85,8 @@ html.dark-mode .map-visual {
 }
 
 html.dark-mode .map-panel {
-  background: rgba(13, 31, 23, 0.82);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(13, 31, 23, 0.9);
+  border-color: rgba(26, 127, 75, 0.28);
 }
 
 .map-panel strong {

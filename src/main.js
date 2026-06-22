@@ -18,10 +18,13 @@ function bootstrap() {
 
   renderLandingPage(root);
 
-  const langSelect = document.getElementById("langSelect");
-  if (langSelect) {
-    langSelect.addEventListener("change", (e) => {
-      setLanguage(e.target.value);
+  // Re-bind mouseleave on the newly rendered dropdown
+  const globeBtn = document.getElementById("langGlobeBtn");
+  const langDropdown = document.getElementById("langDropdown");
+  if (globeBtn && langDropdown) {
+    langDropdown.addEventListener("mouseleave", () => {
+      langDropdown.hidden = true;
+      globeBtn.setAttribute("aria-expanded", "false");
     });
   }
 
@@ -39,6 +42,42 @@ function bootstrap() {
 
 function startApp() {
   initTranslation(bootstrap);
+
+  // Persistent document-level delegation for language dropdown clicks
+  document.addEventListener("click", (e) => {
+    const globeBtn = document.getElementById("langGlobeBtn");
+    const langDropdown = document.getElementById("langDropdown");
+    if (!globeBtn || !langDropdown) return;
+
+    const isGlobeClick = globeBtn.contains(e.target);
+    const isDropdownClick = langDropdown.contains(e.target);
+    const langOption = e.target.closest(".lang-option");
+
+    if (isGlobeClick) {
+      const isOpen = !langDropdown.hidden;
+      langDropdown.hidden = isOpen;
+      globeBtn.setAttribute("aria-expanded", String(!isOpen));
+    } else if (langOption) {
+      // Set language (this triggers re-render via bootstrap)
+      setLanguage(langOption.dataset.lang);
+    } else if (!isDropdownClick) {
+      langDropdown.hidden = true;
+      globeBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const globeBtn = document.getElementById("langGlobeBtn");
+      const langDropdown = document.getElementById("langDropdown");
+      if (globeBtn && langDropdown) {
+        langDropdown.hidden = true;
+        globeBtn.setAttribute("aria-expanded", "false");
+      }
+    }
+  });
+
   bootstrap();
 }
 
