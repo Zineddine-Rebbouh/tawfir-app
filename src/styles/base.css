@@ -16,10 +16,19 @@ body {
   overflow-x: hidden;
   color: var(--color-text);
   background: var(--color-surface);
-  font-family: "Cairo", system-ui, sans-serif;
   text-align: start;
   -webkit-font-smoothing: antialiased;
 }
+
+html[lang="ar"] body {
+  font-family: "Cairo", system-ui, sans-serif;
+}
+
+html[lang="fr"] body,
+html[lang="en"] body {
+  font-family: "Plus Jakarta Sans", "DM Sans", sans-serif;
+}
+
 
 body.modal-open {
   overflow: hidden;

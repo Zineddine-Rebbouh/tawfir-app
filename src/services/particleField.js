@@ -67,6 +67,12 @@ export function initParticleField(prefersReducedMotion) {
     lastFrame = time;
 
     if (isActive) {
+      // Check if canvas is still active in DOM to prevent memory leak on re-render
+      if (canvas !== document.getElementById("particleCanvas")) {
+        window.removeEventListener("resize", resize);
+        return;
+      }
+
       ctx.clearRect(0, 0, logicalWidth, logicalHeight);
       particles.forEach((particle) => {
         particle.y -= particle.speed * 1.6 * delta;
@@ -102,6 +108,11 @@ export function initParticleField(prefersReducedMotion) {
   window.addEventListener("resize", resize, { passive: true });
   new IntersectionObserver((entries) => {
     isActive = entries.some((entry) => entry.isIntersecting);
-    if (!isActive) ctx.clearRect(0, 0, logicalWidth, logicalHeight);
+    if (!isActive) {
+      if (canvas === document.getElementById("particleCanvas")) {
+        ctx.clearRect(0, 0, logicalWidth, logicalHeight);
+      }
+    }
   }, { rootMargin: "200px 0px 200px 0px" }).observe(hero);
 }
+

@@ -1,4 +1,4 @@
-import { testimonials } from "../data/content.js";
+import { t } from "../services/translationService.js";
 import { SectionHeader } from "./SectionHeader.js";
 import { StarRating } from "./StarRating.js";
 
@@ -18,12 +18,14 @@ function testimonialCard(testimonial) {
 }
 
 export function Testimonials() {
+  const items = t("testimonials.items");
   return `
     <section class="section grid-bg" id="testimonials" aria-labelledby="testimonialsTitle">
       <div class="container">
-        ${SectionHeader({ eyebrow: "آراء المستخدمين", title: "ثقة تبدأ من الحي وتكبر مع كل عملية", id: "testimonialsTitle" })}
-        <div class="testimonials-grid">${testimonials.map(testimonialCard).join("")}</div>
+        ${SectionHeader({ eyebrow: t("testimonials.eyebrow"), title: t("testimonials.title"), id: "testimonialsTitle" })}
+        <div class="testimonials-grid">${items.map(testimonialCard).join("")}</div>
       </div>
     </section>
   `;
 }
+

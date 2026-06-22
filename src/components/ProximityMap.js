@@ -1,6 +1,9 @@
-import { nearbyLocations } from "../data/content.js";
+import { t } from "../services/translationService.js";
+import { toArabicNumber } from "../utils/arabicNumbers.js";
 
 export function ProximityMap() {
+  const locations = t("proximityMap.locations");
+
   return `
     <section class="section" id="map" aria-labelledby="mapTitle">
       <div class="container map-grid">
@@ -14,17 +17,18 @@ export function ProximityMap() {
           <span class="map-pin amber pin-2"></span>
           <span class="map-pin pin-3"></span>
           <span class="map-pin amber pin-4"></span>
-          <div class="map-panel"><strong>تم تحديد ولايتك: الجزائر العاصمة</strong><span>٥٦ عرضاً قريباً خلال ٣ كيلومتر</span></div>
+          <div class="map-panel"><strong>${t("proximityMap.detectedWilaya")}</strong><span>${t("proximityMap.offersStats")}</span></div>
         </div>
         <div class="map-copy fade-in">
-          <span class="eyebrow">اكتشف قربك</span>
-          <h2 id="mapTitle">اكتشف الطعام بالقرب منك</h2>
-          <p class="fr" dir="ltr" lang="fr">Trouvez les offres les plus proches de vous grâce à notre système de géolocalisation avancé.</p>
+          <span class="eyebrow">${t("proximityMap.eyebrow")}</span>
+          <h2 id="mapTitle">${t("proximityMap.title")}</h2>
+          <p>${t("proximityMap.subtitle")}</p>
           <div class="location-list">
-            ${nearbyLocations.map((location) => `<div class="location-item"><strong>${location.name}</strong><span>${location.offers}</span></div>`).join("")}
+            ${locations.map((location) => `<div class="location-item"><strong>${location.name}</strong><span>${toArabicNumber(location.count)} ${location.suffix}</span></div>`).join("")}
           </div>
         </div>
       </div>
     </section>
   `;
 }
+

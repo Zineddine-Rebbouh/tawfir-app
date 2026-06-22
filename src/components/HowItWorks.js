@@ -1,4 +1,4 @@
-import { howItWorksActors } from "../data/content.js";
+import { t } from "../services/translationService.js";
 import { icon } from "./Icon.js";
 import { SectionHeader } from "./SectionHeader.js";
 import { toArabicNumber } from "../utils/arabicNumbers.js";
@@ -23,17 +23,19 @@ function actorColumn(actor) {
 }
 
 export function HowItWorks() {
+  const actors = t("howItWorks.actors");
   return `
     <section class="section grid-bg" id="how" aria-labelledby="howTitle">
       <div class="container">
         ${SectionHeader({
-          eyebrow: "كيف تعمل",
-          title: "كيف يعمل توفير",
-          subtitle: "Trois rôles, une seule mission : réduire le gaspillage alimentaire",
+          eyebrow: t("howItWorks.eyebrow"),
+          title: t("howItWorks.title"),
+          subtitle: t("howItWorks.subtitle"),
           id: "howTitle"
         })}
-        <div class="how-grid">${howItWorksActors.map(actorColumn).join("")}</div>
+        <div class="how-grid">${actors.map(actorColumn).join("")}</div>
       </div>
     </section>
   `;
 }
+

@@ -10,12 +10,21 @@ import { initParticleField } from "./services/particleField.js";
 import { initVideoModal } from "./services/modalService.js";
 import { initWaitlistForm } from "./services/waitlistService.js";
 import { initAlgeriaClock } from "./services/clockService.js";
+import { initTranslation, setLanguage } from "./services/translationService.js";
 
 function bootstrap() {
   const root = document.getElementById("app");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   renderLandingPage(root);
+
+  const langSelect = document.getElementById("langSelect");
+  if (langSelect) {
+    langSelect.addEventListener("change", (e) => {
+      setLanguage(e.target.value);
+    });
+  }
+
   initTheme();
   initMobileNavigation();
   initScrollUi(prefersReducedMotion);
@@ -28,4 +37,10 @@ function bootstrap() {
   initAlgeriaClock();
 }
 
-whenReady(bootstrap);
+function startApp() {
+  initTranslation(bootstrap);
+  bootstrap();
+}
+
+whenReady(startApp);
+

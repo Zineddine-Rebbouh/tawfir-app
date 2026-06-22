@@ -77,6 +77,13 @@ function revealWithoutMotion() {
 }
 
 export function initAnimations(prefersReducedMotion) {
+  if (window.ScrollTrigger) {
+    window.ScrollTrigger.getAll().forEach((t) => t.kill());
+  }
+  if (window.gsap) {
+    window.gsap.killTweensOf("*");
+  }
+
   if (prefersReducedMotion) {
     revealWithoutMotion();
     return;
@@ -85,3 +92,4 @@ export function initAnimations(prefersReducedMotion) {
   initIntersectionReveal();
   if (!initGsapAnimations()) revealWithoutMotion();
 }
+

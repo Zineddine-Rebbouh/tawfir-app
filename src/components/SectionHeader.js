@@ -3,7 +3,8 @@ export function SectionHeader({ eyebrow, title, subtitle, id }) {
     <div class="section-header fade-in">
       ${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ""}
       <h2 class="section-title" id="${id}">${title}</h2>
-      ${subtitle ? `<p class="section-subtitle fr" dir="ltr" lang="fr">${subtitle}</p>` : ""}
+      ${subtitle ? `<p class="section-subtitle">${subtitle}</p>` : ""}
     </div>
   `;
 }
+

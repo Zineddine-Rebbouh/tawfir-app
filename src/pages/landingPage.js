@@ -12,10 +12,11 @@ import { TrustBadges } from "../components/TrustBadges.js";
 import { Footer } from "../components/Footer.js";
 import { FloatingActions } from "../components/FloatingActions.js";
 import { VideoModal } from "../components/VideoModal.js";
+import { t } from "../services/translationService.js";
 
 export function LandingPage() {
   return `
-    <a class="skip-link" href="#main">تجاوز إلى المحتوى الرئيسي</a>
+    <a class="skip-link" href="#main">${t("skipToContent")}</a>
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
     ${Navbar()}
     <main id="main">
@@ -39,3 +40,4 @@ export function LandingPage() {
 export function renderLandingPage(root) {
   root.innerHTML = LandingPage();
 }
+

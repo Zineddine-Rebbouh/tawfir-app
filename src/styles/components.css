@@ -245,8 +245,8 @@ html.dark-mode .mobile-menu {
 
 .floating-whatsapp {
   position: fixed;
-  left: 22px;
-  right: auto;
+  inset-inline-start: 22px;
+  inset-inline-end: auto;
   bottom: 24px;
   z-index: 900;
   display: flex;
@@ -286,14 +286,15 @@ html.dark-mode .mobile-menu {
 
 .scroll-top {
   position: fixed;
-  right: 22px;
-  left: auto;
+  inset-inline-end: 22px;
+  inset-inline-start: auto;
   bottom: 24px;
   z-index: 900;
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px);
 }
+
 
 .scroll-top.is-visible {
   opacity: 1;

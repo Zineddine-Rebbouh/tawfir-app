@@ -1,36 +1,40 @@
-import { ecoTiers } from "../data/content.js";
+import { t } from "../services/translationService.js";
+import { toArabicNumber } from "../utils/arabicNumbers.js";
 
 function tierRow(tier) {
   return `
     <div class="tier-row">
       <span class="tier-dot" style="background:${tier.color};"></span>
-      <strong>${tier.ar}</strong>
-      <span dir="ltr" lang="fr">${tier.fr}</span>
+      <strong>${tier.label}</strong>
     </div>
   `;
 }
 
 export function EcoScore() {
+  const tiers = t("ecoScore.tiers");
+  const scoreValue = t("ecoScore.scoreValue");
+  
   return `
     <section class="section grid-bg" id="eco" aria-labelledby="ecoTitle">
       <div class="container eco-grid">
         <div class="eco-copy fade-in">
-          <span class="eyebrow">نظام الإيكو سكور</span>
-          <h2 class="section-title" id="ecoTitle">الثقة تتحول إلى امتيازات داخل المنصة</h2>
-          <p>كل عملية استلام مؤكدة، كل التزام بالوقت، وكل تقرير أثر موثّق يرفع ثقة المستخدم ويمنحه وصولاً أفضل للعروض والطلبات.</p>
-          <p class="fr" dir="ltr" lang="fr">Le score combine fiabilité, ponctualité, qualité des transactions et contribution sociale pour protéger tout l'écosystème.</p>
-          <div class="tier-table" aria-label="مستويات الإيكو سكور">${ecoTiers.map(tierRow).join("")}</div>
+          <span class="eyebrow">${t("ecoScore.eyebrow")}</span>
+          <h2 class="section-title" id="ecoTitle">${t("ecoScore.title")}</h2>
+          <p>${t("ecoScore.description")}</p>
+          <p>${t("ecoScore.subtitle")}</p>
+          <div class="tier-table" aria-label="${t("ecoScore.tableLabel")}">${tiers.map(tierRow).join("")}</div>
         </div>
-        <div class="eco-visual fade-in" id="ecoVisual" aria-label="نقاط الإيكو ٧٣ من ١٠٠">
+        <div class="eco-visual fade-in" id="ecoVisual" aria-label="${t("ecoScore.currentTierLabel")}: ${toArabicNumber(scoreValue)} ${t("ecoScore.scoreText")}">
           <div class="eco-ring-card">
             <div class="eco-ring" id="ecoRing">
-              <div class="eco-score-number"><strong id="ecoScoreNumber">٠</strong><span>من ١٠٠</span></div>
+              <div class="eco-score-number"><strong id="ecoScoreNumber">٠</strong><span>${t("ecoScore.scoreText")}</span></div>
             </div>
-            <h3>مستوى موثوق</h3>
-            <p class="fr" dir="ltr" lang="fr">Score actuel : 73/100</p>
+            <h3>${t("ecoScore.currentTierLabel")}</h3>
+            <p>${t("ecoScore.statusText")}</p>
           </div>
         </div>
       </div>
     </section>
   `;
 }
+

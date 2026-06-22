@@ -554,7 +554,7 @@ export const translations = {
       titleLines: [
         ["Save", "food."],
         ["Save", "money."],
-        ["Make a", "difference."]
+        ["Make difference."]
       ],
       subtitle: "Tawfir connects merchants, consumers, and charities to fight food waste in Algeria.",
       wilayaLabel: "View food in your wilaya",

@@ -1,21 +1,22 @@
-import { screenshots } from "../data/content.js";
+import { t } from "../services/translationService.js";
 import { PhoneFrame, ScreenshotImage } from "./PhoneFrame.js";
 import { SectionHeader } from "./SectionHeader.js";
 
 export function ScreenshotShowcase() {
-  const [left, center, right] = screenshots;
+  const items = t("screenshots.items");
+  const [left, center, right] = items;
 
   return `
     <section class="section dark-section" id="screenshots" aria-labelledby="screensTitle">
       <div class="container">
         ${SectionHeader({
-          eyebrow: "واجهة التطبيق",
-          title: "تجربة استخدام سلسة ومبتكرة",
-          subtitle: "تصميم عصري يضع سهولة الاستخدام في المقام الأول، ليضمن لك تنقلاً سريعاً وتجربة ممتعة في كل خطوة.",
+          eyebrow: t("screenshots.eyebrow"),
+          title: t("screenshots.title"),
+          subtitle: t("screenshots.subtitle"),
           id: "screensTitle"
         })}
         <div class="screenshot-stage fade-in">
-          <div class="phone-carousel" aria-label="معرض لقطات التطبيق">
+          <div class="phone-carousel" aria-label="Carousel">
             <div class="carousel-phone left">${PhoneFrame(ScreenshotImage(left))}</div>
             <div class="carousel-phone center">${PhoneFrame(ScreenshotImage(center))}</div>
             <div class="carousel-phone right">${PhoneFrame(ScreenshotImage(right))}</div>
@@ -25,4 +26,5 @@ export function ScreenshotShowcase() {
     </section>
   `;
 }
+
 

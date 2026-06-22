@@ -1,4 +1,5 @@
 import { qs, on } from "../utils/dom.js";
+import { t } from "./translationService.js";
 
 export function initWaitlistForm() {
   const form = qs("#waitlistForm");
@@ -31,7 +32,7 @@ export function initWaitlistForm() {
     // Loading state
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = "جارٍ الإرسال...";
+      submitBtn.textContent = t("waitlistService.sending");
     }
     form.classList.add("form--loading");
     form.classList.remove("form--success", "form--error");
@@ -45,9 +46,9 @@ export function initWaitlistForm() {
       form.classList.add("form--success");
       
       if (submitBtn) {
-        submitBtn.textContent = "تم التسجيل ✓";
+        submitBtn.textContent = t("waitlistService.registered");
       }
-      successMsg.textContent = "شكراً! سنتواصل معك قريباً.";
+      successMsg.textContent = t("waitlistService.success");
 
       // Reset after 4 seconds
       setTimeout(() => {
@@ -66,7 +67,7 @@ export function initWaitlistForm() {
         submitBtn.disabled = false;
         submitBtn.textContent = originalBtnText;
       }
-      errorMsg.textContent = "حدث خطأ. حاول مرة أخرى.";
+      errorMsg.textContent = t("waitlistService.error");
 
       // Reset error state after 4 seconds
       setTimeout(() => {
@@ -75,3 +76,4 @@ export function initWaitlistForm() {
     }
   });
 }
+
