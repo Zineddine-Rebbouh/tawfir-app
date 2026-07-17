@@ -1,4 +1,4 @@
-# Tawfir Landing Page
+# Tawfir Application
 
 Arabic-first landing page for **Tawfir / توفير**, an Algerian food-saving marketplace connecting merchants, consumers, and charities.
 
