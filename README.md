@@ -3,7 +3,6 @@
 Arabic-first landing page for **Tawfir (توفير)**, an Algerian food-saving marketplace connecting merchants, consumers, and charities.
 
 **Live demo:** https://tawfir-landing-page.vercel.app/
-**Repository:** https://github.com/Zineddine-Rebbouh/tawfir-app
 
 ---
 
